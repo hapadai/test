@@ -1,0 +1,46 @@
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/tensorflow/python/client/session.py", line 1021, in _do_call
+    return fn(*args)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/tensorflow/python/client/session.py", line 1003, in _run_fn
+    status, run_metadata)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/contextlib.py", line 66, in __exit__
+    next(self.gen)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/tensorflow/python/framework/errors_impl.py", line 469, in raise_exception_on_not_ok_status
+    pywrap_tensorflow.TF_GetCode(status))
+tensorflow.python.framework.errors_impl.FailedPreconditionError: Attempting to use uninitialized value Variable_2
+	 [[Node: Variable_2/read = Identity[T=DT_FLOAT, _class=["loc:@Variable_2"], _device="/job:localhost/replica:0/task:0/cpu:0"](Variable_2)]]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/tbd/Desktop/src/PycharmProjects/Test/test/first/DLC2_costPlaceholder.py", line 34, in <module>
+    sess.run(train, feed_dict={X:x_data, Y:y_data})
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/tensorflow/python/client/session.py", line 766, in run
+    run_metadata_ptr)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/tensorflow/python/client/session.py", line 964, in _run
+    feed_dict_string, options, run_metadata)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/tensorflow/python/client/session.py", line 1014, in _do_run
+    target_list, options, run_metadata)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/tensorflow/python/client/session.py", line 1034, in _do_call
+    raise type(e)(node_def, op, message)
+tensorflow.python.framework.errors_impl.FailedPreconditionError: Attempting to use uninitialized value Variable_2
+	 [[Node: Variable_2/read = Identity[T=DT_FLOAT, _class=["loc:@Variable_2"], _device="/job:localhost/replica:0/task:0/cpu:0"](Variable_2)]]
+
+Caused by op 'Variable_2/read', defined at:
+  File "/Users/tbd/Desktop/src/PycharmProjects/Test/test/first/DLC2_costPlaceholder.py", line 21, in <module>
+    a = tf.Variable(0.1)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/tensorflow/python/ops/variables.py", line 224, in __init__
+    expected_shape=expected_shape)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/tensorflow/python/ops/variables.py", line 370, in _init_from_args
+    self._snapshot = array_ops.identity(self._variable, name="read")
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/tensorflow/python/ops/gen_array_ops.py", line 1424, in identity
+    result = _op_def_lib.apply_op("Identity", input=input, name=name)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/tensorflow/python/framework/op_def_library.py", line 759, in apply_op
+    op_def=op_def)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/tensorflow/python/framework/ops.py", line 2240, in create_op
+    original_op=self._default_original_op, op_def=op_def)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/tensorflow/python/framework/ops.py", line 1128, in __init__
+    self._traceback = _extract_stack()
+
+FailedPreconditionError (see above for traceback): Attempting to use uninitialized value Variable_2
+	 [[Node: Variable_2/read = Identity[T=DT_FLOAT, _class=["loc:@Variable_2"], _device="/job:localhost/replica:0/task:0/cpu:0"](Variable_2)]]
