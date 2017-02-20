@@ -18,8 +18,13 @@ hyporthesis = W * x_data + b
 # Cost function
 cost = tf.reduce_mean(tf.square(hyporthesis - y_data))
 
-#Minimize
-a = tf.Variable(0.1)  # Learing rate, alpha
+# Minimize
+# cost function을 GradientDescentOptimizer을 써서 train한다는 것은
+# W 값을 임의로 정하고 x, y Data을 넣어서 계산해서 cost을 계산한다
+# 실제로는 W, cost 2차 방정식에서 특정 값에서의 기울기를 정해서 W의 이동 크기를 자동으로 계산한다
+# y = y - 기울기
+
+a = tf.Variable(0.1)  # Laring rate, alpha
 optimizer = tf.train.GradientDescentOptimizer(a)
 train = optimizer.minimize(cost)
 
@@ -31,11 +36,11 @@ sess = tf.Session()
 sess.run(init)
 
 # Fit the liner Line
-for step in range(1001):
+for step in range(10):
 	sess.run(train)
 	#if step % 20 == 0:
 
-	print (step, sess.run(cost), sess.run(W), sess.run(b))
+	print (step, sess.run(cost), sess.run(W), sess.run(b), sess.run(hyporthesis))
 
 	x_result.append(sess.run(W))
 	y_result.append(sess.run(b))

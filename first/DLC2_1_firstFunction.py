@@ -77,6 +77,3 @@ def TensorBoard():
 #placeholder()
 
 TensorBoard()
-
-# git testgit
-
